@@ -68,7 +68,7 @@
     ```
 
 8. Add the following to your base template:
-
+    {% raw %}
     ```html
     {% load easy_docs_tags %}
     <head>
@@ -77,9 +77,10 @@
         ...
     </head>
     ```
+    {% endraw %}
 
 9. Alternately, you can add the scripts for HTMX, Alpine JS, and easy docs CSS manually:
-
+    {% raw %}
     ```html
     {% load static %}
     <head>
@@ -90,9 +91,9 @@
         ...
     </head>
     ```
-
+    {% endraw %}
 10. Add [Bootstrap 4](https://getbootstrap.com/docs/4.0/getting-started/introduction/) to your base template:
-
+    {% raw %}
     ```html
     {% load static %}
     <head>
@@ -114,3 +115,4 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   </body>
     ```
+    {% endraw %}
