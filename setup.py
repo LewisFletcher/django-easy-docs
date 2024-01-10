@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 setup(
-    name='django-help-me',
+    name='django-easy-docs',
     version='1.0.0',
     packages=find_packages(exclude=['*.migrations', '*.migrations.*', 'migrations.*', 'migrations', 'docs', 'docs.*']),
     include_package_data=True,

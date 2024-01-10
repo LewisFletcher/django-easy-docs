@@ -7,7 +7,7 @@ register = template.Library()
 
 @register.simple_tag
 def load_dependencies():
-    css_url = static('help_me/css/styles.css')
+    css_url = static('easy_docs/css/styles.css')
     return mark_safe(f"""
     <!-- Include AlpineJS -->
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@2" defer></script>
@@ -23,5 +23,5 @@ def markdown_format(text):
     return md.markdown(text, extensions=['markdown.extensions.fenced_code'])
 
 @register.simple_tag(takes_context=True)
-def include_documentation(context):
+def help_button(context):
     return template.loader.render_to_string('documentation.html', context)

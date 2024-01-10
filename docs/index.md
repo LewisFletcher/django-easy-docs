@@ -4,5 +4,5 @@ Contents
 --------
 * [Installation](installation.md)
 * [Usage](usage.md)
-* [Settings](settings.md)
-* [Template tags](templatetags.md)
+* [Template Tags](templatetags.md)
+* [Customizing](customizing.md)

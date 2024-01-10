@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class HelpMeConfig(AppConfig):
+class EasyDocsConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'help_me'
+    name = 'easy_docs'
