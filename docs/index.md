@@ -1,4 +1,4 @@
-# Welcome to Django Help Me's documentation!
+# Welcome to Django Easy Doc's documentation!
 
 Contents
 --------
