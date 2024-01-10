@@ -1,0 +1,67 @@
+{% load documentation_tags %}
+{% if messages %}
+<div>
+    <strong>Message:</strong>
+    <ul>
+    {% for message in messages %}
+    <li>{{message}}</li>
+    {% endfor %}
+    </ul>
+</div>
+{% endif %}
+{% if not slug_view %}
+<h1 class="text-center font-weight-bold mb-4">{% if not slug_view and not history_view %}<a href="{% url 'documentation' documentation.title_slug %}">{{documentation.title}}</a></h5>{% else %}{{documentation.title}}</h1>{% endif %}
+{% else %}
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h1 class="text-center">{{documentation.title}}</h1>
+    <div>
+      <a href="/">
+        Return to Site
+      </a>
+    </div>
+  </div>
+{% endif %}
+<div>{{ documentation.content|markdown|safe }}</div>
+
+{% if documentation.reference_url %}
+<h5>Page Referenced:</h5>
+<p><a href="{{ documentation.reference_url }}">{{ documentation.reference_url }}</a></p>
+{% endif %}
+
+{% if user.is_staff %}
+<h5>Keywords:</h5>
+<p>{{ documentation.keywords }}</p>
+
+<h5>Public:</h5>
+<p>{{ documentation.public|yesno:"Yes,No" }}</p>
+
+<h5>Created At:</h5>
+<p>{{ documentation.created_at }}</p>
+
+<h5>Updated At:</h5>
+<p>{{ documentation.updated_at }}</p>
+
+{% if documentation.created_by %}
+    <h5>Created By:</h5>
+    <p>{{ documentation.created_by.email }}</p>
+{% endif %}
+
+{% if documentation.updated_by %}
+    <h5>Updated By:</h5>
+    <p>{{ documentation.updated_by.email }}</p>
+{% endif %}
+{% if not slug_view and not history_view %}
+<div class="d-flex justify-content-between align-items-center">
+    <button class="btn btn-primary" hx-get="{% url 'edit_document' documentation.pk %}" hx-target="#documentationModal .modal-body" hx-trigger="click" data-target="#documentationModal" type="button">Edit</button>
+    <div class="mr-2"><a href="{% url 'view_history' documentation.pk %}">History</a></div>
+</div>
+{% elif history_view %}
+<button class="btn btn-primary" hx-get="{% url 'revert_history' documentation.id history_id %}" hx-target="#documentationModal .modal-body" hx-trigger="click" data-target="#documentationModal" type="button">Revert Doc</button>
+{% else %}
+<div class="d-flex justify-content-between align-items-center">
+    <button class="btn btn-primary" hx-get="{% url 'edit_document' documentation.pk %}?slug_view=True" hx-target="#content-start" hx-trigger="click" data-target="#documentationModal" type="button">Edit</button>
+    <div class="mr-2"><a href="{% url 'view_history' documentation.pk %}">History</a></div>
+</div>
+{% endif %}
+{% endif %}
+</div>

@@ -1,0 +1,10 @@
+{% load documentation_tags %}
+{% extends "admin/change_form.html" %}
+{% load static %}
+
+{% block extrahead %}
+    {% load_dependencies %}
+    {{ block.super }}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/admin_markdown.css' %}">
+
+{% endblock %}

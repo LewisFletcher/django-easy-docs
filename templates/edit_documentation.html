@@ -1,0 +1,25 @@
+<div class="container">
+    <h1>Edit Documentation</h1>
+    <form method="POST" action="" class="mt-3">
+        {% csrf_token %}
+        
+        {% for field in form %}
+            <div class="form-group">
+                {% if field.field.widget.input_type != 'hidden' %}<label for="{{ field.id_for_label }}" class="h4">{{ field.label }}</label>{% endif %}
+                {{ field }}
+                {% if field.help_text %}
+                    <small class="form-text text-muted">{{ field.help_text }}</small>
+                {% endif %}
+                {% for error in field.errors %}
+                    <div class="alert alert-danger">{{ error }}</div>
+                {% endfor %}
+            </div>
+        {% endfor %}
+        {% if not slug_view %}
+        <button hx-post="{% url 'edit_document' documentation.pk %}" hx-target="#documentationModal .modal-body" hx-swap="innerHTML" class="btn btn-primary">Update</button>
+        {% else %}
+        <button hx-post="{% url 'edit_document' documentation.pk %}?slug_view=True" hx-target="#doc-start" hx-swap="innerHTML" class="btn btn-primary">Update</button>
+        {% endif %}
+    </form>
+    {{ form.media }}
+</div>

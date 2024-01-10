@@ -1,0 +1,6 @@
+{% for record in history %}
+      <tr {% if page_obj.has_next %} {% if forloop.last %} hx-get="{{ url }}?page={{ page_obj.number|add:1 }}" hx-trigger="revealed" hx-swap="afterend" hx-target="this" {% endif %}{% endif %} class="{% cycle 'table-secondary' '' %}"> <td><a href="" hx-get="{% url 'view_history_document' documentation.pk record.pk %}" hx-target="#documentationModal .modal-body" hx-trigger="click" data-toggle="modal" data-target="#documentationModal">{{ record.title }}</a></td>
+        <td>{{ record.updated_by }}</td>
+        <td>{{ record.updated_at }}</td>
+      </tr>
+{% endfor %}

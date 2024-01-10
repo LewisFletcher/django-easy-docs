@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="container d-flex flex-column justify-content-center p-4">
+      <div class="text-right mb-4">
+        <a href="/">
+          Return to Site
+        </a>
+      </div>
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h1 class="text-center">All Documentation</h1>
+            <form method="get" action=".">
+              <input type="text" name="search" placeholder="Search by keywords" value="{{ request.GET.search }}" class="form-control" style="width: 300px; display: inline-block; margin-right: 10px;">
+              <button class="btn btn-primary" type="submit">Search</button>
+              <a href="{% url 'all_documentation' %}">Clear</a>
+            </form>
+            {% if user.is_staff %}
+            <div>
+              <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#documentationModal" hx-get="{% url 'add_documentation' %}" hx-trigger="click" hx-target="#documentationModal .modal-body" hx-swap="innerHTML">
+                Add Documentation
+              </button>
+            </div>
+            {% endif %}
+          </div>
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered table-hover">
+                <thead class="thead-light">  
+                <tr>
+                    <th scope="col">Title</th>
+                    <th scope="col">Updated By</th>
+                    <th scope="col">Updated At</th>
+                </tr>
+                </thead>
+                <tbody>
+                    {% include 'documentation_list.html' %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="modal fade" id="documentationModal" tabindex="-1" role="dialog" aria-labelledby="documentationModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document" style="max-width: 60%;">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="documentationModalLabel"><a href="{% url 'all_documentation' %}">Documentation</a></h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+
+            </div>
+          </div>
+      </div>
+    </div>
+{% endblock %}
+</body>
+</html>
