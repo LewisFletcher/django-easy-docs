@@ -1,8 +1,9 @@
 # Usage
 
 ## Add the Help Button
+{% raw %}
 If you want a page to have documentation associated with it, add `{% help_button %}` to the template wherever you would like the help button to be. Ensure you load the help tag by adding `{% load easy_docs_tags %}` to the top of the template, and that you have loaded the dependencies by adding `{% load_dependencies %}` to the `<head>` of your base template.
-
+{% endraw %}
 ## Create docs
 - A staff member, when clicking help, will open the documentation editor if there is no documentation associated with the page.
 - The slugs and URL references are taken care of behind the scenes, based on the URL of the page the help button is on.
