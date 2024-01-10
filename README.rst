@@ -1,6 +1,6 @@
-===============
+================
 django-easy-docs
-===============
+================
 
 A simple, opinionated way to add documentation to your website. Add a "Help" button to any page, and intuitively build the documentation for your Django app.
 
@@ -12,7 +12,7 @@ If you want to see something added, please request it! As I said, this is still 
 
 
 Installation
---------------
+------------
 
 Install via pip. ::
 
@@ -38,21 +38,20 @@ You will also need to add the ``easy_docs`` URL to your project's ``urls.py`` fi
 
 This package also takes advantage of several other packages, including:
 
-- Django Simple History: https://django-simple-history.readthedocs.io/en/latest/
-- Django MarkdownX: https://neutronx.github.io/django-markdownx/
-- Django HTMX: https://django-htmx.readthedocs.io/en/latest/
+`Django Simple History <https://django-simple-history.readthedocs.io/en/latest/>`_
+`Django MarkdownX <https://neutronx.github.io/django-markdownx/>`_
+`Django HTMX <https://django-htmx.readthedocs.io/en/latest/>`_
 
 These will come pre-installed with ``django-easy-docs``, but you will need to add them to your ``INSTALLED_APPS`` setting if you are not already using them. Please see their documentation for more information and follow their installation instructions.
 
-For full installation instructions, please see the documentation: https://django-easy-docs.readthedocs.io/en/latest/installation.html
+For full installation instructions, please see the `documentation <https://django-easy-docs.readthedocs.io/en/latest/installation.html>`_.
 
 Usage
 -----
 
-''django-easy-docs'' is designed to be as simple as possible to use. Once installed, you can add a "Help" button to any page by adding the following to your template: ::
-
+Easy docs is designed to be as simple as possible to use. Once installed, you can add a "Help" button to any page by adding the following to your template ::
+    
     {% load easy_docs_tags %}
-
     {% help_button %}
 
 This will add a blue button to the page that will open the documentation for that page. If the page does not have any documentation and a staff member is logged in, it will open the documentation editor.
@@ -65,11 +64,10 @@ A backend system is also provided to allow you to manage the documentation for y
 
 Documents are flaggable as public, which will allow them to be viewed by non-staff members. This is useful for adding documentation for your users.
 
-For full usage instructions, please see the documentation: https://django-easy-docs.readthedocs.io/en/latest/usage.html
+For full usage instructions, please see the `documentation <https://django-easy-docs.readthedocs.io/en/latest/usage.html>`_.
 
 Documentation
 -------------
 
-The documentation for this project is available here:
-https://django-easy-docs.readthedocs.io/en/latest/
+The documentation for this project is available `here <https://django-easy-docs.readthedocs.io/en/latest/>`_.
 
