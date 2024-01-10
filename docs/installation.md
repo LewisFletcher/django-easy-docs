@@ -1,3 +1,9 @@
+---
+layout: page
+title: "Installation"
+permalink: /installation/
+nav_order: 1
+---
 # Installation
 
 ## Step-by-step instructions
