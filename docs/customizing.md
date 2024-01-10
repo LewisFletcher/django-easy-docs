@@ -1,10 +1,3 @@
----
-layout: page
-title: "Customizing"
-permalink: /customizing/
-nav_order: 4
----
-
 # Customizing
 
 ## Customizing the template

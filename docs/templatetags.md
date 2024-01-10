@@ -1,9 +1,3 @@
----
-layout: page
-title: "Template Tags"
-permalink: /template-tags/
-nav_order: 3
----
 # Template Tags
 {% raw %}
 ## {% load easy_docs_tags %}

@@ -1,9 +1,3 @@
----
-layout: page
-title: "Usage"
-permalink: /usage/
-nav_order: 2
----
 # Usage
 
 ## Add the Help Button
