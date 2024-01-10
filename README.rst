@@ -2,9 +2,6 @@
 django-help-me
 ===============
 
-.. image:: https://img.shields.io/badge/code%20style-black-000000.svg
-    :target: https://github.com/psf/black
-
 A simple, opinionated way to add documentation to your website. Add a "Help" button to any page, and intuitively build the documentation for your Django app.
 
 This project is still in its early stages of development, and any contributors are welcomed.action-checkbox
@@ -30,6 +27,7 @@ You will need to update your project's settings file to add ``help_me`` to your 
     ]
 
 You will also need to add the ``help_me`` URL to your project's ``urls.py`` file. ::
+
     from django.urls import path, include
 
     urlpatterns = [
@@ -38,7 +36,8 @@ You will also need to add the ``help_me`` URL to your project's ``urls.py`` file
         ...
     ]
 
-This package also takes advantage of several other packages, including: ::
+This package also takes advantage of several other packages, including:
+
 - Django Simple History: https://django-simple-history.readthedocs.io/en/latest/
 - Django MarkdownX: https://neutronx.github.io/django-markdownx/
 - Django HTMX: https://django-htmx.readthedocs.io/en/latest/
