@@ -1,0 +1,6 @@
+# dependencies
+django>=4.0
+django-htmx==1.17.2
+django-markdownx==4.0.7
+django-simple-history==3.4.0
+Markdown==3.5.1
