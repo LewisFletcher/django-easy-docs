@@ -44,7 +44,7 @@ This package also takes advantage of several other packages, including:
 
 These will come pre-installed with ``django-help-me``, but you will need to add them to your ``INSTALLED_APPS`` setting if you are not already using them. Please see their documentation for more information and follow their installation instructions.
 
-For full installation instructions, please see the documentation: https://django-help-me.readthedocs.io/en/latest/installation.html
+For full installation instructions, please see the documentation: https://help-me.readthedocs.io/en/latest/installation.html
 
 Usage
 -----
@@ -65,11 +65,11 @@ A backend system is also provided to allow you to manage the documentation for y
 
 Documents are flaggable as public, which will allow them to be viewed by non-staff members. This is useful for adding documentation for your users.
 
-For full usage instructions, please see the documentation: https://django-help-me.readthedocs.io/en/latest/usage.html
+For full usage instructions, please see the documentation: https://help-me.readthedocs.io/en/latest/usage.html
 
 Documentation
 -------------
 
 The documentation for this project is available here:
-https://django-help-me.readthedocs.io/en/latest/
+https://help-me.readthedocs.io/en/latest/
 
