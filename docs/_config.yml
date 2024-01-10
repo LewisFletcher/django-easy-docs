@@ -1,0 +1,15 @@
+title: Django Easy Docs
+description: >-
+  A simple, opinionated way to add documentation to your website. 
+  Add a "Help" button to any page, and intuitively build the documentation for your Django app.
+
+baseurl: "/django-easy-docs" # the subpath of your site, e.g. /blog
+url: "https://lewisfletcher.github.io/django-easy-docs/"
+
+github_username:  LewisFletcher
+
+# Build settings
+theme: jekyll-theme-primer
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
