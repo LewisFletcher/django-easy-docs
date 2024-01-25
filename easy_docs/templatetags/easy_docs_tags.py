@@ -2,6 +2,7 @@ from django import template
 from django.utils.safestring import mark_safe
 from django.templatetags.static import static
 import markdown as md
+from django.template.loader import render_to_string
 
 register = template.Library()
 
@@ -24,4 +25,5 @@ def markdown_format(text):
 
 @register.simple_tag(takes_context=True)
 def help_button(context):
-    return template.loader.render_to_string('documentation.html', context)
+    context_dict = {k: v for k, v in context.flatten().items()}
+    return render_to_string('documentation.html', context_dict)
