@@ -54,10 +54,9 @@
     ]
     ```
 
-6. Run the commands below to create the migrations for the 'easy_docs' app and it's history and apply them:
+6. Run the command below to apply the migrations for the 'easy_docs' app:
 
     ```bash
-    python manage.py makemigrations
     python manage.py migrate
     ```
 

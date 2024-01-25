@@ -3,3 +3,4 @@ include MANIFEST.in
 include README.md
 recursive-include easy_docs/static *
 recursive-include easy_docs/templates *
+recursive-include easy_docs/migrations *
