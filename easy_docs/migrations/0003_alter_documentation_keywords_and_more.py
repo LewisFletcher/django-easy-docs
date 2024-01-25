@@ -6,7 +6,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('help_me', '0002_alter_documentation_reference_url_and_more'),
+        ('easy_docs', '0002_alter_documentation_reference_url_and_more'),
     ]
 
     operations = [
