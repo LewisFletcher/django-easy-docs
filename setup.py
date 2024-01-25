@@ -5,7 +5,7 @@ with open('README.md', encoding='utf-8') as f:
 
 setup(
     name='django-easy-docs',
-    version='1.1.2',
+    version='1.1.3',
     packages=find_packages(exclude=['*.migrations', '*.migrations.*', 'migrations.*', 'migrations', 'docs', 'docs.*']),
     url='https://github.com/LewisFletcher/django-easy-docs',
     author='Lewis Fletcher',
