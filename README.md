@@ -12,6 +12,8 @@ If you find a bug, please report it!
 
 ## Installation
 
+This is an abridged installation. To properly install the app, please see the [documentation](https://lewisfletcher.github.io/django-easy-docs/installation.html).
+
 Install via pip:
 
 ```bash
