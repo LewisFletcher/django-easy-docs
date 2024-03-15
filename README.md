@@ -85,7 +85,7 @@ This will load the necessary dependencies for Easy Docs to work. You will then b
 
 <body>
     ...
-    {% load_help_button %}
+    {% help_button %}
     ...
 </body>
 ```
