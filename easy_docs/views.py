@@ -21,6 +21,8 @@ def get_document(request, page_url):
                     decoded_url = re.sub(pattern, replacement, decoded_url)
                     break
             except re.error:
+                print('Invalid regex pattern in URL_MAP: ', pattern)
+                print(re.error)
                 pass
     documentation = Documentation.objects.filter(reference_url=decoded_url)
     if documentation.exists():
@@ -36,6 +38,8 @@ def get_document(request, page_url):
                     if doc.public or request.user.is_staff:
                         return render(request, 'doc_modal.html', {'documentation': doc})
             except re.error:
+                print('Invalid regex pattern in Documentation: ', doc.regex_url)
+                print(re.error)
                 pass
     if request.user.is_staff:
         form = DocumentationForm()
@@ -47,10 +51,7 @@ def create_documentation(request):
     if request.method == 'POST':
         form = DocumentationForm(request.POST, initial={'reference_url': request.POST.get('reference_url')})
         if form.is_valid():
-            documentation = form.save(commit=False)
-            if getattr(settings, 'USE_REGEX', False) and 'regex_url' in form.cleaned_data:
-                documentation.regex_url = form.cleaned_data.get('regex_url')
-            documentation.save()
+            form.save()
             messages.success(request, 'Documentation created successfully!')
             return render(request, 'doc_modal.html', {'documentation': documentation})
         else:
@@ -74,10 +75,7 @@ def edit_documentation(request, pk):
     if request.method == 'POST':
         form = DocumentationForm(request.POST, instance=documentation)
         if form.is_valid():
-            documentation = form.save(commit=False)
-            if getattr(settings, 'USE_REGEX', False) and 'regex_url' in form.cleaned_data:
-                documentation.regex_url = form.cleaned_data.get('regex_url')
-            documentation.save()
+            form.save()
             messages.success(request, 'Documentation updated successfully!')
             return render(request, success_template, context)
         else:
