@@ -23,12 +23,18 @@
 {% endif %}
 <div>{{ documentation.content|markdown|safe }}</div>
 
-{% if documentation.reference_url %}
+{% if documentation.reference_url and not documentation.regex_url %}
 <h5>Page Referenced:</h5>
 <p><a href="{{ documentation.reference_url }}">{{ documentation.reference_url }}</a></p>
+{% else %}
+<h5>Original Page Referenced:</h5>
+<p>{{ documentation.reference_url }}</p>
 {% endif %}
-
 {% if user.is_staff %}
+  {% if documentation.regex_url %}
+  <h5>Regex Pattern:</h5>
+  <p>{{ documentation.regex_url }}</p>
+  {% endif %}
 <h5>Keywords:</h5>
 <p>{{ documentation.keywords }}</p>
 
