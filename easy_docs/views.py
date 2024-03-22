@@ -51,7 +51,7 @@ def create_documentation(request):
     if request.method == 'POST':
         form = DocumentationForm(request.POST, initial={'reference_url': request.POST.get('reference_url')})
         if form.is_valid():
-            form.save()
+            documentation = form.save()
             messages.success(request, 'Documentation created successfully!')
             return render(request, 'doc_modal.html', {'documentation': documentation})
         else:
