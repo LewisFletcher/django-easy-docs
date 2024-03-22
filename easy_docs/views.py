@@ -47,10 +47,15 @@ def create_documentation(request):
     if request.method == 'POST':
         form = DocumentationForm(request.POST, initial={'reference_url': request.POST.get('reference_url')})
         if form.is_valid():
-            documentation = form.save()
+            documentation = form.save(commit=False)
+            if getattr(settings, 'USE_REGEX', False) and 'regex_url' in form.cleaned_data:
+                documentation.regex_url = form.cleaned_data.get('regex_url')
+            documentation.save()
             messages.success(request, 'Documentation created successfully!')
             return render(request, 'doc_modal.html', {'documentation': documentation})
         else:
+            messages.error(request, 'There was an error creating the documentation:')
+            messages.error(request, form.errors)
             return render(request, 'create_documentation.html', {'form': form})
     else:
         form = DocumentationForm(initial={'reference_url': request.GET.get('url_ref')})
@@ -69,11 +74,16 @@ def edit_documentation(request, pk):
     if request.method == 'POST':
         form = DocumentationForm(request.POST, instance=documentation)
         if form.is_valid():
-            form.save()
+            documentation = form.save(commit=False)
+            if getattr(settings, 'USE_REGEX', False) and 'regex_url' in form.cleaned_data:
+                documentation.regex_url = form.cleaned_data.get('regex_url')
+            documentation.save()
             messages.success(request, 'Documentation updated successfully!')
             return render(request, success_template, context)
         else:
             context['form'] = form
+            messages.error(request, 'There was an error updating the documentation:')
+            messages.error(request, form.errors)
             return render(request, template, context)
     else:
         form = DocumentationForm(instance=documentation)
