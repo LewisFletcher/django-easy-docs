@@ -9,18 +9,32 @@ from django.views.generic import ListView, DetailView
 from django.http import Http404
 from django.core.paginator import Paginator
 from django.db.models import Q
+from django.conf import settings
+import re
 
 def get_document(request, page_url):
     decoded_url = unquote(page_url)
+    if hasattr(settings, 'URL_MAP') and settings.URL_MAP:
+        for pattern, replacement in settings.URL_MAP:
+            if re.match(pattern, decoded_url):
+                decoded_url = re.sub(pattern, replacement, decoded_url)
+                break
     documentation = Documentation.objects.filter(reference_url=decoded_url)
     if documentation.exists():
         documentation = documentation.first()
         if documentation.public or request.user.is_staff:
             return render(request, 'doc_modal.html', {'documentation': documentation})
-    else:
-        if request.user.is_staff:
-            form = DocumentationForm()
-            return render(request, 'create_documentation.html', {'url_ref': decoded_url, 'form': form})
+    if settings.USE_REGEX:
+        for doc in Documentation.objects.filter(regex_url__isnull=False):
+            try:
+                if re.match(doc.regex_url, decoded_url):
+                    if doc.public or request.user.is_staff:
+                        return render(request, 'doc_modal.html', {'documentation': doc})
+            except re.error:
+                pass
+    if request.user.is_staff:
+        form = DocumentationForm()
+        return render(request, 'create_documentation.html', {'url_ref': decoded_url, 'form': form})
     return render(request, 'not_found.html')
 
 @staff_member_required

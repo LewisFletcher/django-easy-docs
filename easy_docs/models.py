@@ -5,12 +5,14 @@ from django.utils.text import slugify
 from django.core.exceptions import ValidationError
 from django.conf import settings
 from .middleware import CurrentUserMiddleware
+import re
 
 
 class Documentation(models.Model):
     title = models.CharField(max_length=100, unique=True)
     title_slug = models.SlugField(max_length=100, unique=True)
     reference_url = models.CharField(max_length=200, unique=True, blank=True, null=True)
+    regex_url = models.CharField(max_length=200, unique=True, blank=True, null=True, help_text="Regular expression to match the URL of the page you are documenting, if any. Leave blank if this isn't needed.")
     content = MarkdownxField()
     keywords = models.TextField(null=False, blank=True, help_text="Comma separated list of keywords to help users find this documentation.")
     public = models.BooleanField(default=False)

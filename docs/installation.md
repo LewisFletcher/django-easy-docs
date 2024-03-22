@@ -117,3 +117,18 @@
 </body>
 ```
 {% endraw %}
+
+11. Optionally, specify the following settings in your settings.py file:
+
+    ```python
+    # Optional settings
+    USE_REGEX = True
+    URL_MAP = [
+        (r'/products/\d+/', '/products/detail'),
+        (r'/orders/\d+/edit/', '/orders/edit'),
+        (r'/users/\d+/profile/', '/users/profile'),
+    ]
+    ```
+
+    - `USE_REGEX`: Set to `True` to enable user-level URL mapping.
+    - `URL_MAP`: A list of tuples where the first element is a regular expression pattern that matches the dynamic URLs you want to map, and the second element is the replacement string that represents the generic URL pattern you want to map the dynamic URLs to. A more thorough explanation can be found in the [Customizing the URL mapping](https://lewisfletcher.github.io/django-easy-docs/customizing.html#customizing-the-url-mapping) section of the documentation.
